@@ -28,10 +28,12 @@ services:
       - DB_USERNAME=${DB_USERNAME}
       - DB_PASSWORD=${DB_PASSWORD}
   mysql:
-    image: mysql:5.7
+    image: mysql:5.7.22
+    ports:
+      - 3357:3306
     volumes:
       - ./etc/myql/conf.d:/etc/mysql/conf.d
       - ./var/log:/var/log/mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
-      - MYSQL_DATABASE=${DB_DATABASE}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
